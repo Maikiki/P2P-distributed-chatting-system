@@ -6,10 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.InetSocketAddress;
-import java.net.SocketAddress;
+import java.net.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -95,10 +92,12 @@ public class Client extends Thread implements ActionListener {
 
     }
 
-    public static void main(String args[]) throws Exception {
 
-        String serverIP = "192.168.1.5";///122.225.99.40
-        int port = 6636;
+    public static void main(String args[]) throws Exception {
+        InetAddress address = InetAddress.getLocalHost();
+        String serverIP = address.getHostAddress();
+        // System.out.print(serverIP);
+        int port = 1024;
 
         //构造一个目标地址
         SocketAddress target = new InetSocketAddress(serverIP, port);
